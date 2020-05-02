@@ -1,0 +1,13 @@
+{
+  "name": "twelvi",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^1.9.1",
+    "meteor-node-stubs": "~0.2.0",
+    "popper.js": "^1.16.0"
+  }
+}

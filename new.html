@@ -1,0 +1,461 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvivYcq13YuQqAde0UKwtnVflecI-7XEk&amp;libraries=places"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> 
+<script src="showhide.js"></script> 
+<script src="disable.js"></script> 
+<script src="none.js"></script> 
+<script src="daily.js"></script> 
+<script src="weekly.js"></script> 
+<script src="monthly.js"></script> 
+<script src="yearly.js"></script> 
+<script src="reoccurringevent.js"></script> 
+<script src="download.js"></script> 
+<script src="address.js"></script>
+<script src="email.js"></script>
+<script src="resources.js"></script>
+<link rel="stylesheet" href="new.css">
+<meta charset="utf-8">
+<title>New</title>
+</head>
+<!-- reocurring event -->
+<div class="containter">
+  <div class="row">
+    <h1>Reoccurring Event</h1>
+    <hr>
+    <i>Labels marked * are required</i></br>
+    </br>
+  </div>
+  <form action="" name="newics" method="post">
+    <div class="row">
+      <label>* Event Title</label>
+      <br>
+      <input type="text" id="title" name="title">
+      </input>
+    </div>
+    <div class="row">
+      <label>* Location</label>
+      <br>
+      <div ng-controller="AppController as controller" ng-app="app" layout="column">
+        <md-input-container md-no-float>
+          <input id="location" name="location" ng-model="controller.a" googleplace on-changed="controller.b()" aria-label="aa" placeholder=""/>
+        </md-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <label>Description</label>
+      <br>
+      <textarea type="text" id="description" name="description" rows="8"></textarea>
+    </div>
+    <div class="row">
+      <label>Organizer:</label>
+      <br>
+      <input type="email" id="organizer" name="organizer"></input>
+    </div>
+    <div class="row">
+      <label>Recipients:</label>
+      <br>
+      <input type="text" id="multiEmail" name="multiEmail"></input>
+    </div>
+    <div class="row">
+      <label>Resources:</label>
+      <br>
+      <input type="text" id="resources" name="resources"></input>
+    </div><br>
+    <div class="row">
+      <label>Recurrence:</label>
+      <p class='container'>
+        <label>
+          <input type='radio' name='recurrence' value='none' class="radioRecurrence" onclick="showNone()"/>
+          None</label>
+        <br>
+        <label>
+          <input type='radio' name='recurrence' value='daily' class="radioRecurrence" onclick="showDaily()"/>
+          Daily</label>
+        <br>
+        <label>
+          <input type='radio' name='recurrence' value='weekly' class="radioRecurrence" onclick="showWeekly()"/>
+          Weekly</label>
+        <br>
+        <label>
+          <input type='radio' name='recurrence' value='monthly' class="radioRecurrence" onclick="showMonthly()"/>
+          Monthly</label>
+        <br>
+        <label>
+          <input type='radio' name='recurrence' value='yearly' class="radioRecurrence" onclick="showYearly()"/>
+          Yearly</label>
+      </p>
+    </div>
+    <div id="noneDiv" class="hide">
+      <div class="row"><b>No recurrence</b><br>
+        <label>* Start Date</label>
+        <br>
+        <input type="date" id="dateAlpha" name="dateAlpha">
+        </input>
+      </div>
+      <div class="row">
+        <label>* End Date</label>
+        <br>
+        <input type="date" id="dateOmega" name="dateOmega">
+        </input>
+      </div>
+      <div class="row">
+        <label>* Start Time</label>
+        <br>
+        <input type="time" id="timeAlpha" name="timeAlpha">
+        </input>
+      </div>
+      <div class="row">
+        <label>* End Time</label>
+        <br>
+        <input type="time" id="timeOmega" name="timeOmega">
+        </input>
+      </div>
+    </div>
+    <div id="dailyDiv" class="hide"><b>Daily recurrence</b><br>
+      <div class="row">
+        <label>* Start Date</label>
+        <br>
+        <input type="date" id="dateAlphaDaily" name="dateAlphaDaily">
+        </input>
+      </div>
+      <div class="row">
+        <p class='container'>
+          <label>
+            <input type='radio' name="everyDayRadio" value="customDaily" onclick="everyRadioButtonDaily()"/>
+            Every</label>
+          <input type="text" class="everyDay" id="everyDay" name="everyDay">
+          day(s).
+          </input>
+          <br>
+          <label>
+            <input type='radio' name="everyDayRadio" value="everyWeekday" onclick="everyRadioButtonDaily()"/>
+            Every weekday</label>
+          </input>
+        </p>
+        <p class='container'>
+          <label>
+            <input type='radio' name="endDaily" value="byDaily" onclick="endRadioButtonDaily()"/>
+            End by:
+            <input type="date" class="dateOmegaDaily" id="dateOmegaDaily" name="dateOmegaDaily">
+            </input>
+          </label>
+          <br>
+          <label>
+            <input type='radio' name="endDaily" value="afterDaily" onclick="endRadioButtonDaily()"/>
+            End after:</label>
+          <input type="text" class="dailyCount" id="dailyCount" name="dailyCount">
+          </input>
+          occurrences<br>
+          <label>
+            <input type='radio' name="endDaily" value="noEndDaily" onclick="endRadioButtonDaily()"/>
+            No end date</label>
+          <br>
+        </p>
+      </div>
+      <div class="row">
+        <label>* Start Time</label>
+        <br>
+        <input type="time" id="timeAlphaDaily" name="timeAlphaDaily">
+        </input>
+      </div>
+      <div class="row">
+        <label>* End Time</label>
+        <br>
+        <input type="time" id="timeOmegaDaily" name="timeOmegaDaily">
+        </input>
+      </div>
+    </div>
+    <div id="weeklyDiv" class="hide">
+      <div class="row"><b>Weekly recurrence</b><br>
+        <label>* Start Date</label>
+        <br>
+        <input type="date" id="dateAlphaWeekly" name="dateAlphaWeekly">
+        </input>
+      </div>
+      <div class="row"><br>
+        <label>Recur every</label>
+        <input type="text" class="everyWeek" id="everyWeek" name="everyWeek">
+        week(s) on:
+        </input>
+        <br>
+        <br>
+        <table id="daysOfWeekWeekly">
+        </table>
+        <div class="container">
+          <label class="option">
+            <input type="checkbox" name="dayName" id="SU" value="6">
+            Sunday</label>
+          <label class="option">
+            <input type="checkbox" name="dayName" id="MO"  value="0">
+            Monday</label>
+          <label class="option">
+            <input type="checkbox" name="dayName" id="TU"  value="1">
+            Tuesday</label>
+          <label class="option">
+            <input type="checkbox" name="dayName" id="WE" value="2">
+            Wednesday</label>
+          <label class="option">
+            <input type="checkbox" name="dayName" id="TH" value="3">
+            Thursday</label>
+          <label class="option">
+            <input type="checkbox" name="dayName" id="FR" value="4">
+            Friday</label>
+          <label class="option">
+            <input type="checkbox" name="dayName" id="SA" value="5">
+            Saturday</label>
+        </div>
+        </table>
+        <p class='container'>
+          <label>
+            <input type='radio' name="endWeekly" value="byWeekly" onclick="endRadioButtonWeekly()"/>
+            End by:</label>
+          <input type="date" class="dateOmegaWeekly" id="dateOmegaWeekly" name="dateOmegaWeekly">
+          </input>
+          <br>
+          <label>
+            <input type='radio' name="endWeekly" value="afterWeekly" onclick="endRadioButtonWeekly()"/>
+            End after:</label>
+          <input type="text" class="weeklyCount" id="weeklyCount" name="weeklyCount">
+          </input>
+          occurrences<br>
+          <label>
+            <input type='radio' name="endWeekly" value="noEndWeekly" onclick="endRadioButtonWeekly()"/>
+            No end date</label>
+          <br>
+        </p>
+      </div>
+      <div class="row">
+        <label>* Start Time</label>
+        <br>
+        <input type="time" id="timeAlphaWeekly" name="timeAlphaWeekly">
+        </input>
+      </div>
+      <div class="row">
+        <label>* End Time</label>
+        <br>
+        <input type="time" id="timeOmegaWeekly" name="timeOmegaWeekly">
+        </input>
+      </div>
+    </div>
+    <div id="monthlyDiv" class="hide">
+      <div class="row"><b>Monthly recurrence</b><br>
+        <label>* Start Date</label>
+        <br>
+        <input type="date" id="dateAlphaMonthly" name="dateAlphaMonthly">
+        </input>
+      </div>
+      <div class="row">
+        <p class='container'>
+          <label>
+            <input type='radio' name="recurrMonthly" value="chooseDayMonthly" onclick="dayTimeButtonMonthly()"/>
+            Day</label>
+          <input type="text" class="dayMonthly" id="dayMonthly" name="dayMonthly" placeholder="day of month">
+          </input>
+          of every
+          <input type="text" class="everyMonth" id="everyMonth" name="everyMonth" placeholder="monthly interval">
+          month(s)
+          </input>
+          <br>
+          <label>
+            <input type='radio' name="recurrMonthly" value="chooseToMonthly" onclick="dayTimeButtonMonthly()"/>
+            The</label>
+          <select id="monthMonthly" class="monthMonthly" name="monthMonthly">
+            <option value="-1">week</option>
+            <option value="firstWeek">first</option>
+            <option value="secondWeek">second</option>
+            <option value="thirdWeek">third</option>
+            <option value="fourthWeek">fourth</option>
+            <option value="lastWeek">last</option>
+          </select>
+          <select id="weekDayMonthly" class="weekDayMonthly" name="weekDayMonthly">
+            <option value="-1">day of week</option>
+            <option value="sundayChoose">Sunday</option>
+            <option value="mondayChoose">Monday</option>
+            <option value="tuesdayChoose">Tuesday</option>
+            <option value="wednesdayChoose">Wednesday</option>
+            <option value="thursdayChoose">Thursday</option>
+            <option value="fridayChoose">Friday</option>
+            <option value="saturdayChoose">Saturday</option>
+          </select>
+          of every
+          <input type="text" class="toEveryMonth" id="toEveryMonth" name="toEveryMonth" placeholder="monthly interval">
+          month(s)
+          </input>
+          <br>
+        </p>
+        <p class='container'>
+          <label>
+            <input type='radio' name="endMonthly" value="byMonthly" onclick="endRadioButtonMonthly()"/>
+            End by:</label>
+          <input type="date" class="dateOmegaMonthly" id="dateOmegaMonthly" name="dateOmegaMonthly">
+          </input>
+          <br>
+          <label>
+            <input type='radio' name="endMonthly" value="afterMonthly" onclick="endRadioButtonMonthly()"/>
+            End after:</label>
+          <input type="text" class="monthlyCount" id="monthlyCount" name="monthlyCount">
+          </input>
+          occurrences<br>
+          <label>
+            <input type='radio' name="endMonthly" value="noEndMonthly" onclick="endRadioButtonMonthly()"/>
+            No end date</label>
+          <br>
+        </p>
+      </div>
+      <div class="row">
+        <label>* Start Time</label>
+        <br>
+        <input type="time" id="timeAlphaMonthly" name="timeAlphaMonthly">
+        </input>
+      </div>
+      <div class="row">
+        <label>* End Time</label>
+        <br>
+        <input type="time" id="timeOmegaMonthly" name="timeOmegaMonthly">
+        </input>
+      </div>
+    </div>
+    <div id="yearlyDiv" class="hide">
+      <div class="row"><b>Yearly recurrence</b><br>
+        <label>* Start Date</label>
+        <br>
+        <input type="date" id="dateAlphaYearly" name="dateAlphaYearly">
+        </input>
+      </div>
+      <div class="row">
+        <label>Recur every</label>
+        <input type="text" class="numYears" id="numYears" name="numYears">
+        </input>
+        year(s)<br>
+      </div>
+      <div class="row">
+        <p class='container'>
+          <label>
+            <input type='radio' name="recurrYearly" value="chooseDayYearly" onclick="dayTimeButtonYearly()"/>
+            On:</label>
+          <select id="monthNameYearly" class="monthNameYearly" name="monthNameYearly">
+            <option value="-1">month</option>
+            <option value="jan">January</option>
+            <option value="feb">February</option>
+            <option value="mar">March</option>
+            <option value="apr">April</option>
+            <option value="may">May</option>
+            <option value="jun">June</option>
+            <option value="jul">July</option>
+            <option value="aug">August</option>
+            <option value="sep">September</option>
+            <option value="oct">October</option>
+            <option value="nov">November</option>
+            <option value="dec">December</option>
+          </select>
+          <input type="text" class="everyDayOfMonthYear" id="everyDayOfMonthYear" name="everyDayOfMonthYear" placeholder="day of month">
+          </input>
+          <br>
+          <label>
+            <input type='radio' name="recurrYearly" value="chooseToYearly" onclick="dayTimeButtonYearly()"/>
+            On the</label>
+          <select id="weekYearly" class="weekYearly" name="weekYearly">
+            <option value="-1">week</option>
+            <option value="firstWeek">first</option>
+            <option value="secondWeek">second</option>
+            <option value="thirdWeek">third</option>
+            <option value="fourthWeek">fourth</option>
+            <option value="lastWeek">last</option>
+          </select>
+          <select id="weekDayYearly" class="weekDayYearly" name="weekDayYearly">
+            <option value="-1">day</option>
+            <option value="sundayChoose">Sunday</option>
+            <option value="mondayChoose">Monday</option>
+            <option value="tuesdayChoose">Tuesday</option>
+            <option value="wednesdayChoose">Wednesday</option>
+            <option value="thursdayChoose">Thursday</option>
+            <option value="fridayChoose">Friday</option>
+            <option value="saturdayChoose">Saturday</option>
+          </select>
+          <select id="monthNameYearly2" class="monthNameYearly2" name="monthNameYearly2">
+            <option value="-1">month</option>
+            <option value="jan">January</option>
+            <option value="feb">February</option>
+            <option value="mar">March</option>
+            <option value="apr">April</option>
+            <option value="may">May</option>
+            <option value="jun">June</option>
+            <option value="jul">July</option>
+            <option value="aug">August</option>
+            <option value="sep">September</option>
+            <option value="oct">October</option>
+            <option value="nov">November</option>
+            <option value="dec">December</option>
+          </select>
+          <br>
+        </p>
+        <p class='container'>
+          <label>
+            <input type='radio' name="endYearly" value="byYearly" onclick="endRadioButtonYearly()"/>
+            End by:</label>
+          <input type="date" class="dateOmegaYearly" id="dateOmegaYearly" name="dateOmegaYearly">
+          </input>
+          <br>
+          <label>
+            <input type='radio' name="endYearly" value="afterYearly" onclick="endRadioButtonYearly()"/>
+            End after:</label>
+          <input type="text" class="yearlyCount" id="yearlyCount" name="yearlyCount">
+          </input>
+          occurrences<br>
+          <label>
+            <input type='radio' name="endYearly" value="noEndYearly" onclick="endRadioButtonYearly()"/>
+            No end date</label>
+          <br>
+        </p>
+      </div>
+      <div class="row">
+        <label>* Start Time</label>
+        <br>
+        <input type="time" id="timeAlphaYearly" name="timeAlphaYearly">
+        </input>
+      </div>
+      <div class="row">
+        <label>* End Time</label>
+        <br>
+        <input type="time" id="timeOmegaYearly" name="timeOmegaYearly">
+        </input>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <label>Classification:</label>
+      <select id="classType" class="classType" name="classType">
+        <option value="-1">select</option>
+        <option value="1">Public</option>
+        <option value="2">Private</option>
+        <option value="3">Confidential</option>
+      </select>
+      <br>
+      <br>
+    </div>
+    <div class="container">
+      <label>Choose your calendar:</label>
+      <select id="downloadType" class="downloadType" name="downloadType">
+        <option value="-1">select</option>
+        <option value="1">Outlook Calendar</option>
+        <option value="2">Google Calendar</option>
+        <option value="3">Apple Calendar</option>
+      </select>
+      <br>
+      <br>
+    </div>
+    <button class="submit" type="submit" onClick="return check()" data-format="ical">Download</button>
+  </form>
+</div>
+<body>
+</body>
+</html>
