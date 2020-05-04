@@ -826,7 +826,8 @@ $(function () {
 });
 
 $(function () {
-  $("form[name='newics']").submit(function () {
+  $("form[name='newics']").submit(function (event) {
+	  event.preventDefault();
     if ($(this).valid()) {
       var title = $('#title').val();
       var location = $('#location').val();
