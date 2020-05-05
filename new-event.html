@@ -85,7 +85,7 @@ function check() {
           <label for="location">* Location</label>
           <div ng-controller="AppController as controller" ng-app="app" layout="column">
             <md-input-container md-no-float>
-              <input id="location" class="form-control" name="location" ng-model="controller.a" googleplace on-changed="controller.b()" aria-label="aa" placeholder=""/>
+              <input id="location" onsubmit="encode" class="form-control" name="location" ng-model="controller.a" googleplace on-changed="controller.b()" aria-label="aa" placeholder=""/>
             </md-input-container>
           </div>
         </div>

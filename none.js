@@ -26,7 +26,10 @@ $.validator.addMethod("timeTestNone", function (value, element) {
 
 function getMessageNone() {
   var title = $('#title').val();
-  var location = $('#location').val();
+      var locationTemp = $('#location').val();
+      var locationTemp2 = locationTemp.toString();
+      var location = encode(locationTemp2);
+	
   var geo = str;
   var description = $('#description').val();
   var attendees = $('#attendees').val();
@@ -43,5 +46,5 @@ function getMessageNone() {
   var toEmail = getEmail();
   var resources = getResources();
 
-  return ["CALSCALE:GREGORIAN\nBEGIN:VEVENT\nDTSTART;TZID='Hawaiian Standard Time':" + dateAlpha + "\nDTEND;TZID='Hawaiian Standard Time':" + dateOmega + "\nGEO:" + geo + "\nLOCATION:" + location + "\nPRIORITY:5" + to + toEmail + "\n" + resources +  "\nDESCRIPTION:" + description + "\nSUMMARY:" + title + "\nEND:VEVENT\nEND:VCALENDAR"];
+  return ["CALSCALE:GREGORIAN\nBEGIN:VEVENT\nDTSTART;TZID='Hawaiian Standard Time':" + dateAlpha + "\nDTEND;TZID='Hawaiian Standard Time':" + dateOmega + "\nGEO:" + geo + "\nLOCATION:" + location + "\nPRIORITY:5" + to + toEmail + "\n" + resources + "\nDESCRIPTION:" + description + "\nSUMMARY:" + title + "\nEND:VEVENT\nEND:VCALENDAR"];
 }
