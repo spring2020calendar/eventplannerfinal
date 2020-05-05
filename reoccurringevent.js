@@ -5,7 +5,7 @@ function encode(address) {
   ns = ns.replace(/(["ʻ"])+/g, "'");
   ns = ns.replace(/(["ā"])+/g, 'a');
   $('.location').text(ns)
-return ns;
+  return ns;
 
 }
 
@@ -248,7 +248,7 @@ $(function () {
       location: {
         required: true,
         minlength: 1, // <- here
-        maxlength: 200
+        maxlength: 300
       },
       multiEmail: {
         multiEmailCheck: true
@@ -820,6 +820,8 @@ $(function () {
         } else if (element.is('.numYears')) {
           error.appendTo(element.parents('.text-input'));
         } else if (element.is('.yearlyCount')) {
+          error.appendTo(element.parents('.text-input'));
+        } else if (element.is('.multiEmail')) {
           error.appendTo(element.parents('.text-input'));
         } else { // This is the default behavior 
           error.insertAfter(element);

@@ -1,6 +1,6 @@
 // JavaScript Document
 function getResources() {
-  var resourcesArray = document.forms["newics"]["resources"].value.replace(/\s/g, '').split(',');
+  var resourcesArray = document.forms["newics"]["resources"].value.split(',');
   var resources = '';
   if (resourcesArray.length == 0) {
     resources = '';

@@ -3,7 +3,7 @@
       type="image/png" 
       href="image/logo-tab.png">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
@@ -60,691 +60,713 @@ function check() {
 <title>Twelvi | New Event</title>
 </head>
 <body>
-<!-- Navigation --> 
+<!-- Navigation -->
 
-<!-- Page Content -->
-<div class="container-fluid">
+<div class="container-fluid"> 
+  <!-- Page Content -->
   <div class="row">
-    <div class="mb-1 pt-5 col-lg-12 text-center"> <img class="img-logo" src="image/logo-4.png"> </div>
+    <div class="mb-1 pt-5 col-lg-12 col-xs-12 col-12 text-center"> <img class="img-logo" src="image/logo-4.png"> </div>
   </div>
-</div>
-<div class="pt-4 container-fluid">
-  <div class="row justify-content-center"> 
-    
-    <!-- Form Content -->
-    <form action="" name="newics" method="" class="px-5 mx-2 py-3 col-4 col-md-5 col-sm-8 col-xs-10 border bg-white rounded">
-      <i>
-      <p class="text-muted">Labels marked * are required</p>
-      </i>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="title">* Event Title</label>
-          <input type="text" class="form-control" id="title" name="title" placeholder="">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="location">* Location</label>
-          <div ng-controller="AppController as controller" ng-app="app" layout="column">
-            <md-input-container md-no-float>
-              <input id="location" onsubmit="encode" class="form-control" name="location" ng-model="controller.a" googleplace on-changed="controller.b()" aria-label="aa" placeholder=""/>
-            </md-input-container>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="2"></textarea>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="organizer">Organizer</label>
-          <input type="email" class="form-control" id="organizer" placeholder="Organizer email">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="recipients">Attendee(s)</label>
-          <input type="text" class="form-control" id="multiEmail" placeholder="Attendee(s) email">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="resources">Resources</label>
-        <textarea type="text" class="form-control" id="resources" placeholder="" rows="1"></textarea>
-      </div>
-      <div class="form-row">
-        <div class="form-group container">
-          <label for="recurrence">* Recurrence</label>
-          <div class="form-check">
-            <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="none" onClick="showNone()">
-            <label class="form-check-label" for="none"> None </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="daily" onClick="showDaily()">
-            <label class="form-check-label" for="daily"> Daily </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="weekly" onClick="showWeekly()">
-            <label class="form-check-label" for="weekly"> Weekly </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="monthly" onClick="showMonthly()">
-            <label class="form-check-label" for="monthly"> Monthly </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="yearly" onClick="showYearly()">
-            <label class="form-check-label" for="yearly"> Yearly </label>
-          </div>
-        </div>
-      </div>
-      <!-- No recurrence -->
-      <div id="noneDiv" class="hide"><b>No Recurrence</b><hr>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="dateAlpha">* Start Date</label>
-            <input type="date" class="form-control" id="dateAlpha" name="dateAlpha">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="dateOmega">* End Date</label>
-            <input type="date" class="form-control" id="dateOmega" name="dateOmega">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="timeAlpha">* Start Time</label>
-            <input type="time" class="form-control" id="timeAlpha" name="timeAlpha">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="timeOmega">* End Time</label>
-            <input type="time" class="form-control" id="timeOmega" name="timeOmega">
-          </div>
-        </div><hr>
-      </div>
-      <!-- End of no recurrence --> 
-      <!-- Daily recurrence -->
-      <div id="dailyDiv" class="hide"><b>Daily Recurrence</b><hr>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="dateAlphaDaily">* Start Date</label>
-            <input type="date" class="form-control" id="dateAlphaDaily" name="dateAlphaDaily">
-          </div>
-        </div>
-        <!-- everyDayRadio radio -->
-        <div class="form-row">
-          <div class="form-group container">
-            <div class="form-row">
-              <label for="recurrence">* Daily Type</label>
+  <div class="row">
+    <div class="pt-4 container-fluid">
+      <div class="row justify-content-center"> 
+        <div class="col-xs-12 col-sm-11 col-md-6 col-lg-6">
+        <!-- Form Content -->
+        <form action="" name="newics" method="" class="px-5 mx-2 py-3 border bg-white rounded form-style">
+          <i>
+          <p class="text-muted">Labels marked * are required</p>
+          </i>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="title">* Event Title</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="">
             </div>
-            <div class="form-row text-input">
-              <div class="col-auto">
-                <div class="form-row">
-                  <div class="col-auto">
-                  <div class="form-check py-1">
-                  <input class="form-check-input" type="radio" name="everyDayRadio" value="customDaily" onClick="everyRadioButtonDaily()">
-                  <label class="form-check-label" for="everyDay">
-                  Every
-                  </div>
-                  </div>
-                  <div class="col-2 my-1">
-                    <input type="text" class="form-control everyDay" id="everyDay" name="everyDay">
-                  </div>
-                  <div class="col-auto pt-1 my-1"> day(s).
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto">
-                <div class="form-check py-1">
-                  <input class="form-check-input" type="radio" name="everyDayRadio" value="everyWeekDay" onClick="everyRadioButtonDaily()">
-                  <label class="form-check-label" for="daily"> Every weekday </label>
-                </div>
+            <div class="form-group col-md-6">
+              <label for="location">* Location</label>
+              <div ng-controller="AppController as controller" ng-app="app" layout="column">
+                <md-input-container md-no-float>
+                  <input id="location" onsubmit="encode" class="form-control" name="location" ng-model="controller.a" googleplace on-changed="controller.b()" aria-label="aa" placeholder=""/>
+                </md-input-container>
               </div>
             </div>
           </div>
-        </div>
-        <!-- End of everyDayRadio radio --> 
-        <!-- endDaily radio -->
-        <div class="form-row">
-          <div class="form-group container">
-            <div class="form-row">
-              <label for="recurrence">* Daily End Type</label>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="endDaily" value="byDaily" onClick="endRadioButtonDaily()">
-              <label class="form-check-label" for="dateOmegaDaily">
-              End by
-              </div>
-              </div>
-              <div class="col-auto my-1">
-                <input type="date" class="form-control dateOmegaDaily" id="dateOmegaDaily" name="dateOmegaDaily">
-                </label>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-row text-input">
-                <div class="col-auto my-1">
-                <div class="form-check py-1">
-                <input class="form-check-input" type="radio" name="endDaily" value="afterDaily" onClick="endRadioButtonDaily()">
-                <label class="form-check-label" for="dailyCount">
-                End after
-                </div>
-                </div>
-                <div class="col-2 my-1">
-                  <input type="text" class="form-control dailyCount" id="dailyCount" name="dailyCount">
-                </div>
-                <div class="col-auto pt-1 my-1"> ocurrence(s).
-                  </label>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-auto my-1">
-                  <div class="form-check py-1">
-                    <input class="form-check-input" type="radio" name="endDaily" value="noEndDaily" onClick="endRadioButtonDaily()">
-                    <label class="form-check-label" for="noEndDaily"> No End Date </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="timeAlphaDaily">* Start Time</label>
-            <input type="time" class="form-control" id="timeAlphaDaily" name="timeAlphaDaily">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="timeOmegaDaily">* End Time</label>
-            <input type="time" class="form-control" id="timeOmegaDaily" name="timeOmegaDaily">
-          </div>
-        </div>
-        <!-- End of endDaily radio --> 
-		  <hr>
-      </div>
-      <!-- End of daily recurrence --> 
-      <!-- Weekly recurrence -->
-      <div id="weeklyDiv" class="hide"><b>Weekly Recurrence</b><hr>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="dateAlphaWeekly">* Start Date</label>
-            <input type="date" class="form-control" id="dateAlphaWeekly" name="dateAlphaWeekly">
-          </div>
-        </div>
-		  <div class="form-row pb-3 text-input">
-			  <div class="col-auto">
-        <div class="form-row pb-2">
-          <div class="col-auto pt-2 my-1">
-          <label for="everyWeek">
-          Recur every
-          </div>
-          <div class="col-2 my-1">
-            <input type="text" class="form-control everyWeek" id="everyWeek" name="everyWeek">
-          </div>
-          <div class="col-auto pt-2 my-1"> week(s) on:
-            </label>
-          </div>
-        </div>
-			  </div>
-		  </div>
-        <div class="form-row pl-5 container">
-          <div class="form-group daysOfWeekWeekly">
-            <div class="form-row">
-              <div class="col-auto">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="dayName" id="SU" value="6">
-                  <label class="form-check-label" for="Sunday">Sunday</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="dayName" id="MO" value="0">
-                  <label class="form-check-label" for="Monday">Monday</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="dayName" id="TU" value="1">
-                  <label class="form-check-label" for="Tuesday">Tuesday</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="dayName" id="WE" value="2">
-                  <label class="form-check-label" for="Wednesday">Wednesday</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="dayName" id="TH" value="3">
-                  <label class="form-check-label" for="Thursday">Thursday</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="dayName" id="FR" value="4">
-                  <label class="form-check-label" for="Friday">Friday</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="dayName" id="SA" value="5">
-                  <label class="form-check-label" for="Saturday">Saturday</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- endWeekly radio -->
-        <div class="form-row">
-          <div class="form-group container">
-            <div class="form-row">
-              <label for="recurrence">* Weekly End Type</label>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="endWeekly" value="byWeekly" onClick="endRadioButtonWeekly()">
-              <label class="form-check-label" for="dateOmegaWeekly">
-              End by
-              </div>
-              </div>
-              <div class="col-auto my-1">
-                <input type="date" class="form-control dateOmegaWeekly" id="dateOmegaWeekly" name="dateOmegaWeekly">
-                </label>
-              </div>
-            </div>
-            <div class="form-row text-input">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="endWeekly" value="afterWeekly" onClick="endRadioButtonWeekly()">
-              <label class="form-check-label" for="weeklyCount">
-              End after
-              </div>
-              </div>
-              <div class="col-2 my-1">
-                <input type="text" class="form-control weeklyCount" id="weeklyCount" name="weeklyCount">
-              </div>
-              <div class="col-auto pt-1 my-1"> ocurrence(s).
-                </label>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-                <div class="form-check py-1">
-                  <input class="form-check-input" type="radio" name="endWeekly" value="noEndWeekly" onClick="endRadioButtonWeekly()">
-                  <label class="form-check-label" for="noEndWeekly"> No End Date </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="timeAlphaWeekly">* Start Time</label>
-            <input type="time" class="form-control" id="timeAlphaWeekly" name="timeAlphaWeekly">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="timeOmegaWeekly">* End Time</label>
-            <input type="time" class="form-control" id="timeOmegaWeekly" name="timeOmegaWeekly">
-          </div>
-        </div>
-        <!-- End of endWeekly radio --> 
-		  <hr>
-      </div>
-      <!-- End of weekly recurrence --> 
-      <!-- Monthly recurrence -->
-      <div id="monthlyDiv" class="hide"><b>Monthly Recurrence</b><hr>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="dateAlphaMonthly">* Start Date</label>
-            <input type="date" class="form-control" id="dateAlphaMonthly" name="dateAlphaMonthly">
-          </div>
-        </div>
-        <!-- recurrMonthly radio -->
-        <div class="form-row">
           <div class="form-group">
-            <div class="form-row">
-              <label for="recurrence">* Monthly Type</label>
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="2"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="organizer">Organizer</label>
+              <input type="email" class="form-control" id="organizer" placeholder="Organizer email">
             </div>
+            <div class="form-group col-md-6 text-input">
+              <label for="multiEmail">Attendee(s)</label>
+              <input type="text" class="form-control" name="multiEmail" id="multiEmail" placeholder="Attendee(s) email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="resources">Resources</label>
+            <textarea type="text" class="form-control" id="resources" placeholder="" rows="1"></textarea>
+          </div>
+          <div class="form-row">
             <div class="form-group container">
-              <div class="form-row">
-                <div class="col-auto text-input">
-                  <div class="form-row">
-                    <div class="col-auto my-1">
-                    <div class="form-check py-1">
-                    <label class="form-check-label" for="dayMonthlyLabel">
-                    <input class="form-check-input" type="radio" name="recurrMonthly" value="chooseDayMonthly" onClick="dayTimeButtonMonthly()">
-                    Day
+              <label for="recurrence">* Recurrence</label>
+              <div class="form-check">
+                <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="none" onClick="showNone()">
+                <label class="form-check-label" for="none"> None </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="daily" onClick="showDaily()">
+                <label class="form-check-label" for="daily"> Daily </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="weekly" onClick="showWeekly()">
+                <label class="form-check-label" for="weekly"> Weekly </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="monthly" onClick="showMonthly()">
+                <label class="form-check-label" for="monthly"> Monthly </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input radioRecurrence" type="radio" name="recurrence" value="yearly" onClick="showYearly()">
+                <label class="form-check-label" for="yearly"> Yearly </label>
+              </div>
+            </div>
+          </div>
+          <!-- No recurrence -->
+          <div class="row justify-content-center">
+            <div class="col-11 px-0 mx-0">
+              <div id="noneDiv" class="hide"><b>No Recurrence</b>
+                <hr>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="dateAlpha">* Start Date</label>
+                    <input type="date" class="form-control" id="dateAlpha" name="dateAlpha">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="dateOmega">* End Date</label>
+                    <input type="date" class="form-control" id="dateOmega" name="dateOmega">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="timeAlpha">* Start Time</label>
+                    <input type="time" class="form-control" id="timeAlpha" name="timeAlpha">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="timeOmega">* End Time</label>
+                    <input type="time" class="form-control" id="timeOmega" name="timeOmega">
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <!-- End of no recurrence --> 
+          <!-- Daily recurrence -->
+          <div class="row justify-content-center">
+            <div class="col-11 px-0 mx-0">
+              <div id="dailyDiv" class="hide"><b>Daily Recurrence</b>
+                <hr>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="dateAlphaDaily">* Start Date</label>
+                    <input type="date" class="form-control" id="dateAlphaDaily" name="dateAlphaDaily">
+                  </div>
+                </div>
+                <!-- everyDayRadio radio -->
+                <div class="form-row">
+                  <div class="form-group col-auto">
+                    <div class="form-row">
+                      <label for="recurrence">* Daily Type</label>
                     </div>
+                    <div class="form-row text-input">
+                      <div class="col-auto">
+                        <div class="form-row">
+                          <div class="col-auto">
+                          <div class="form-check py-1">
+                          <input class="form-check-input" type="radio" name="everyDayRadio" value="customDaily" onClick="everyRadioButtonDaily()">
+                          <label class="form-check-label" for="everyDay">
+                          Every
+                          </div>
+                          </div>
+                          <div class="col-2 my-1">
+                            <input type="text" class="form-control everyDay" id="everyDay" name="everyDay">
+                          </div>
+                          <div class="col-auto pt-1 my-1"> day(s).
+                            </label>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-4 my-1">
-                      <input type="text" class="form-control dayMonthly" id="dayMonthly" name="dayMonthly" placeholder="day of month">
-                    </div>
-                    <div class="col-auto pt-1 my-1"> of every </div>
-                    <div class="col-3 my-1">
-                      <input type="text" class="form-control everyMonth" id="everyMonth" name="everyMonth" placeholder="interval">
-                    </div>
-                    <div class="col-auto pt-1 my-1"> month(s).
-                      </label>
+                    <div class="form-row">
+                      <div class="col-auto">
+                        <div class="form-check py-1">
+                          <input class="form-check-input" type="radio" name="everyDayRadio" value="everyWeekDay" onClick="everyRadioButtonDaily()">
+                          <label class="form-check-label" for="daily"> Every weekday </label>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="col-auto text-input">
-                  <div class="form-row">
-                    <div class="col-auto my-1">
-                    <div class="form-check py-1">
-                    <input class="form-check-input" type="radio" name="recurrMonthly" value="chooseToMonthly" onClick="dayTimeButtonMonthly()">
-                    <label class="form-check-label" for="recurrMonthly">
-                    The
+                <!-- End of everyDayRadio radio --> 
+                <!-- endDaily radio -->
+                <div class="form-row">
+                  <div class="form-group col-auto">
+                    <div class="form-row">
+                      <label for="recurrence">* Daily End Type</label>
                     </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="endDaily" value="byDaily" onClick="endRadioButtonDaily()">
+                      <label class="form-check-label" for="dateOmegaDaily">
+                      End by
+                      </div>
+                      </div>
+                      <div class="col-auto my-1">
+                        <input type="date" class="form-control dateOmegaDaily" id="dateOmegaDaily" name="dateOmegaDaily">
+                        </label>
+                      </div>
                     </div>
-                    <div class="col-auto my-1">
-                      <select class="form-control monthMonthly" id="monthMonthly" name="monthMonthly">
-                        <option value="-1">week</option>
-                        <option value="firstWeek">first</option>
-                        <option value="secondWeek">second</option>
-                        <option value="thirdWeek">third</option>
-                        <option value="fourthWeek">fourth</option>
-                        <option value="lastWeek">last</option>
-                      </select>
+                    <div class="form-row text-input">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="endDaily" value="afterDaily" onClick="endRadioButtonDaily()">
+                      <label class="form-check-label" for="dailyCount">
+                      End after
+                      </div>
+                      </div>
+                      <div class="col-2 my-1">
+                        <input type="text" class="form-control dailyCount" id="dailyCount" name="dailyCount">
+                      </div>
+                      <div class="col-auto pt-1 my-1"> ocurrence(s).
+                        </label>
+                      </div>
                     </div>
-                    <div class="col-auto my-1">
-                      <select class="form-control weekDayMonthly" id="weekDayMonthly" name="weekDayMonthly">
-                        <option value="-1">day of week</option>
-                        <option value="sundayChoose">Sunday</option>
-                        <option value="mondayChoose">Monday</option>
-                        <option value="tuesdayChoose">Tuesday</option>
-                        <option value="wednesdayChoose">Wednesday</option>
-                        <option value="thursdayChoose">Thursday</option>
-                        <option value="fridayChoose">Friday</option>
-                        <option value="saturdayChoose">Saturday</option>
-                      </select>
-                    </div>
-                    <div class="col-auto pt-1 my-1"> of every
-                      </label>
-                    </div>
-                    <div class="col-3 my-1">
-                      <input type="text" class="form-control toEveryMonth" id="toEveryMonth" name="toEveryMonth" placeholder="interval">
-                    </div>
-                    <div class="col-auto pt-1 my-1"> month(s).
-                      </label>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                        <div class="form-check py-1">
+                          <input class="form-check-input" type="radio" name="endDaily" value="noEndDaily" onClick="endRadioButtonDaily()">
+                          <label class="form-check-label" for="noEndDaily"> No End Date </label>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End of recurrMonthly radio --> 
-        <!-- endMonthly radio -->
-        <div class="form-row">
-          <div class="form-group container">
-            <div class="form-row">
-              <label for="recurrence">* Monthly End Type</label>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="endMonthly" value="byMonthly" onClick="endRadioButtonMonthly()">
-              <label class="form-check-label" for="dateOmegaMonthly">
-              End by
-              </div>
-              </div>
-              <div class="col-auto my-1">
-                <input type="date" class="form-control dateOmegaMonthly" id="dateOmegaMonthly" name="dateOmegaMonthly">
-                </label>
-              </div>
-            </div>
-            <div class="form-row text-input">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="endMonthly" value="afterMonthly" onClick="endRadioButtonMonthly()">
-              <label class="form-check-label" for="monthlyCount">
-              End after
-              </div>
-              </div>
-              <div class="col-2 my-1">
-                <input type="text" class="form-control monthlyCount" id="monthlyCount" name="monthlyCount">
-              </div>
-              <div class="col-auto pt-1 my-1"> ocurrence(s).
-                </label>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-                <div class="form-check py-1">
-                  <input class="form-check-input" type="radio" name="endMonthly" value="noEndMonthly" onClick="endRadioButtonMonthly()">
-                  <label class="form-check-label" for="noEndMonthly"> No End Date </label>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="timeAlphaDaily">* Start Time</label>
+                    <input type="time" class="form-control" id="timeAlphaDaily" name="timeAlphaDaily">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="timeOmegaDaily">* End Time</label>
+                    <input type="time" class="form-control" id="timeOmegaDaily" name="timeOmegaDaily">
+                  </div>
                 </div>
+                <!-- End of endDaily radio -->
+                <hr>
               </div>
+              <!-- End of daily recurrence --> 
             </div>
           </div>
-        </div>
-        <!-- End of endMonthly radio --> 
-        <!-- Start and end time monthly radio -->
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="timeAlphaMonthly">* Start Time</label>
-            <input type="time" class="form-control" id="timeAlphaMonthly" name="timeAlphaMonthly">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="timeOmegaMonthly">* End Time</label>
-            <input type="time" class="form-control" id="timeOmegaMonthly" name="timeOmegaMonthly">
-          </div>
-        </div>
-        <!-- End of start and end time monthly radio --> 
-		<hr>
-      </div>
-      <!-- End of monthly recurrence --> 
-      <!-- Yearly recurrence -->
-      <div id="yearlyDiv" class="hide"><b>Yearly Recurrence</b><hr>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="dateAlphaYearly">* Start Date</label>
-            <input type="date" class="form-control" id="dateAlphaYearly" name="dateAlphaYearly">
-          </div>
-        </div>
-        <div class="form-row pb-3 text-input">
-          <div class="col-auto">
-            <div class="form-row pb-2">
-              <div class="col-auto pt-2 my-1">
-              <label for="numYears">
-              Recur every
-              </div>
-              <div class="col-2 my-1">
-                <input type="text" class="form-control numYears" id="numYears" name="numYears">
-              </div>
-              <div class="col-auto pt-2 my-1"> year(s)
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- recurrYearly radio -->
-        <div class="form-row">
-          <div class="form-group container">
-            <div class="form-row">
-              <label for="recurrence">* Yearly Type</label>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="recurrYearly" value="chooseDayYearly" onClick="dayTimeButtonYearly()">
-              <label class="form-check-label" for="dayYearlyLabel">
-              On
-              </div>
-              </div>
-              <div class="col-auto my-1">
-                <select class="form-control monthNameYearly" id="monthNameYearly" name="monthNameYearly">
-                  <option value="-1">month</option>
-                  <option value="jan">January</option>
-                  <option value="feb">February</option>
-                  <option value="mar">March</option>
-                  <option value="apr">April</option>
-                  <option value="may">May</option>
-                  <option value="jun">June</option>
-                  <option value="jul">July</option>
-                  <option value="aug">August</option>
-                  <option value="sep">September</option>
-                  <option value="oct">October</option>
-                  <option value="nov">November</option>
-                  <option value="dec">December</option>
-                </select>
-              </div>
-              <div class="col-4 my-1">
-                <input type="text" class="form-control everyDayOfMonthYear" id="everyDayOfMonthYear" name="everyDayOfMonthYear" placeholder="day of month">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="recurrYearly" value="chooseToYearly" onClick="dayTimeButtonYearly()">
-              <label class="form-check-label" for="recurrYearly">
-              The
-              </div>
-              </div>
-              <div class="col-auto my-1">
-                <select class="form-control weekYearly" id="weekYearly" name="weekYearly">
-                  <option value="-1">week</option>
-                  <option value="firstWeek">first</option>
-                  <option value="secondWeek">second</option>
-                  <option value="thirdWeek">third</option>
-                  <option value="fourthWeek">fourth</option>
-                  <option value="lastWeek">last</option>
-                </select>
-              </div>
-              <div class="col-auto my-1">
-                <select class="form-control weekDayYearly" id="weekDayYearly" name="weekDayYearly">
-                  <option value="-1">day of week</option>
-                  <option value="sundayChoose">Sunday</option>
-                  <option value="mondayChoose">Monday</option>
-                  <option value="tuesdayChoose">Tuesday</option>
-                  <option value="wednesdayChoose">Wednesday</option>
-                  <option value="thursdayChoose">Thursday</option>
-                  <option value="fridayChoose">Friday</option>
-                  <option value="saturdayChoose">Saturday</option>
-                </select>
-              </div>
-              <div class="col-auto my-1">
-                <select class="form-control monthNameYearly2" id="monthNameYearly2" name="monthNameYearly2">
-                  <option value="-1">month</option>
-                  <option value="jan">January</option>
-                  <option value="feb">February</option>
-                  <option value="mar">March</option>
-                  <option value="apr">April</option>
-                  <option value="may">May</option>
-                  <option value="jun">June</option>
-                  <option value="jul">July</option>
-                  <option value="aug">August</option>
-                  <option value="sep">September</option>
-                  <option value="oct">October</option>
-                  <option value="nov">November</option>
-                  <option value="dec">December</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- endYearly radio -->
-        <div class="form-row">
-          <div class="form-group container">
-            <div class="form-row">
-              <label for="recurrence">* Yearly End Type</label>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="endYearly" value="byYearly" onClick="endRadioButtonYearly()">
-              <label class="form-check-label" for="dateOmegaYearly">
-              End by
-              </div>
-              </div>
-              <div class="col-auto my-1">
-                <input type="date" class="form-control dateOmegaYearly" id="dateOmegaYearly" name="dateOmegaYearly">
-                </label>
-              </div>
-            </div>
-            <div class="form-row text-input">
-              <div class="col-auto my-1">
-              <div class="form-check py-1">
-              <input class="form-check-input" type="radio" name="endYearly" value="afterYearly" onClick="endRadioButtonYearly()">
-              <label class="form-check-label" for="yearlyCount">
-              End after
-              </div>
-              </div>
-              <div class="col-2 my-1">
-                <input type="text" class="form-control yearlyCount" id="yearlyCount" name="yearlyCount">
-              </div>
-              <div class="col-auto pt-1 my-1"> ocurrence(s).
-                </label>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-auto my-1">
-                <div class="form-check py-1">
-                  <input class="form-check-input" type="radio" name="endYearly" value="noEndYearly" onClick="endRadioButtonYearly()">
-                  <label class="form-check-label" for="noEndYearly"> No End Date </label>
+          <!-- Weekly recurrence -->
+          <div class="row justify-content-center">
+            <div class="col-11 px-0 mx-0">
+              <div id="weeklyDiv" class="hide"><b>Weekly Recurrence</b>
+                <hr>
+                <div class="form-row">
+                  <div class="form-group col-6">
+                      <label for="dateAlphaWeekly">* Start Date</label>
+                      <input type="date" class="form-control" id="dateAlphaWeekly" name="dateAlphaWeekly">
+                    </div>
                 </div>
+                <div class="form-row pb-2 text-input">
+                  <div class="col-auto">
+                    <div class="form-row">
+                      <div class="col-auto pt-2 my-1">
+                      <label for="everyWeek">
+                      Recur every
+                      </div>
+                      <div class="col-2 my-1">
+                        <input type="text" class="form-control everyWeek" id="everyWeek" name="everyWeek">
+                      </div>
+                      <div class="col-auto pt-2 my-1"> week(s) on:
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row pl-5 container">
+                  <div class="form-group col-auto daysOfWeekWeekly">
+                    <div class="form-row">
+                      <div class="col-auto">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="dayName" id="SU" value="6">
+                          <label class="form-check-label" for="Sunday">Sunday</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="dayName" id="MO" value="0">
+                          <label class="form-check-label" for="Monday">Monday</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="dayName" id="TU" value="1">
+                          <label class="form-check-label" for="Tuesday">Tuesday</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="dayName" id="WE" value="2">
+                          <label class="form-check-label" for="Wednesday">Wednesday</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="dayName" id="TH" value="3">
+                          <label class="form-check-label" for="Thursday">Thursday</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="dayName" id="FR" value="4">
+                          <label class="form-check-label" for="Friday">Friday</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" name="dayName" id="SA" value="5">
+                          <label class="form-check-label" for="Saturday">Saturday</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- endWeekly radio -->
+                <div class="form-row">
+                  <div class="form-group col-auto">
+                    <div class="form-row">
+                  <div class="form-group pb-0 mb-0 col-auto">
+                      <label for="recurrence">* Weekly End Type</label>
+						</div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="endWeekly" value="byWeekly" onClick="endRadioButtonWeekly()">
+                      <label class="form-check-label" for="dateOmegaWeekly">
+                      End by
+                      </div>
+                      </div>
+                      <div class="col-auto my-1">
+                        <input type="date" class="form-control dateOmegaWeekly" id="dateOmegaWeekly" name="dateOmegaWeekly">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-row text-input">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="endWeekly" value="afterWeekly" onClick="endRadioButtonWeekly()">
+                      <label class="form-check-label" for="weeklyCount">
+                      End after
+                      </div>
+                      </div>
+                      <div class="col-2 my-1">
+                        <input type="text" class="form-control weeklyCount" id="weeklyCount" name="weeklyCount">
+                      </div>
+                      <div class="col-auto pt-1 my-1"> ocurrence(s).
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                        <div class="form-check py-1">
+                          <input class="form-check-input" type="radio" name="endWeekly" value="noEndWeekly" onClick="endRadioButtonWeekly()">
+                          <label class="form-check-label" for="noEndWeekly"> No End Date </label>
+                        </div>
+                      </div>
+                    </div>
+				  </div>
+				</div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="timeAlphaWeekly">* Start Time</label>
+                    <input type="time" class="form-control" id="timeAlphaWeekly" name="timeAlphaWeekly">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="timeOmegaWeekly">* End Time</label>
+                    <input type="time" class="form-control" id="timeOmegaWeekly" name="timeOmegaWeekly">
+                  </div>
+                </div>
+                <!-- End of endWeekly radio -->
+                <hr>
+              </div>
+              <!-- End of weekly recurrence --> 
+            </div>
+          </div>
+          <!-- Monthly recurrence -->
+          <div class="row justify-content-center">
+            <div class="col-11 px-0 mx-0">
+              <div id="monthlyDiv" class="hide"><b>Monthly Recurrence</b>
+                <hr>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="dateAlphaMonthly">* Start Date</label>
+                    <input type="date" class="form-control" id="dateAlphaMonthly" name="dateAlphaMonthly">
+                  </div>
+                </div>
+                <!-- recurrMonthly radio -->
+                <div class="form-row">
+                  <div class="form-group container">
+                    <div class="form-row">
+                      <label for="recurrence">* Monthly Type</label>
+                    </div>
+                    <div class="text-input">
+                      <div class="form-row">
+                        <div class="col-auto my-1">
+                        <div class="form-check py-1">
+                        <label class="form-check-label" for="dayMonthlyLabel">
+                        <input class="form-check-input" type="radio" name="recurrMonthly" value="chooseDayMonthly" onClick="dayTimeButtonMonthly()">
+                        Day
+                        </div>
+                        </div>
+                        <div class="col-4 my-1">
+                          <input type="text" class="form-control dayMonthly" id="dayMonthly" name="dayMonthly" placeholder="day of month">
+                        </div>
+                        <div class="col-auto pt-1 my-1"> of every </div>
+                        <div class="col-3 my-1">
+                          <input type="text" class="form-control everyMonth" id="everyMonth" name="everyMonth" placeholder="interval">
+                        </div>
+                        <div class="col-auto pt-1 my-1"> month(s).
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-input">
+                      <div class="form-row">
+                        <div class="col-auto my-1">
+                        <div class="form-check py-1">
+                        <input class="form-check-input" type="radio" name="recurrMonthly" value="chooseToMonthly" onClick="dayTimeButtonMonthly()">
+                        <label class="form-check-label" for="recurrMonthly">
+                        The
+                        </div>
+                        </div>
+                        <div class="col-auto my-1">
+                          <select class="form-control monthMonthly" id="monthMonthly" name="monthMonthly">
+                            <option value="-1">week</option>
+                            <option value="firstWeek">first</option>
+                            <option value="secondWeek">second</option>
+                            <option value="thirdWeek">third</option>
+                            <option value="fourthWeek">fourth</option>
+                            <option value="lastWeek">last</option>
+                          </select>
+                        </div>
+                        <div class="col-auto my-1">
+                          <select class="form-control weekDayMonthly" id="weekDayMonthly" name="weekDayMonthly">
+                            <option value="-1">day of week</option>
+                            <option value="sundayChoose">Sunday</option>
+                            <option value="mondayChoose">Monday</option>
+                            <option value="tuesdayChoose">Tuesday</option>
+                            <option value="wednesdayChoose">Wednesday</option>
+                            <option value="thursdayChoose">Thursday</option>
+                            <option value="fridayChoose">Friday</option>
+                            <option value="saturdayChoose">Saturday</option>
+                          </select>
+                        </div>
+                        <div class="col-auto pt-1 my-1"> of every
+                          </label>
+                        </div>
+                        <div class="col-3 my-1">
+                          <input type="text" class="form-control toEveryMonth" id="toEveryMonth" name="toEveryMonth" placeholder="interval">
+                        </div>
+                        <div class="col-auto pt-1 my-1"> month(s).
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of recurrMonthly radio --> 
+                <!-- endMonthly radio -->
+                <div class="form-row">
+                  <div class="form-group container">
+                    <div class="form-row">
+                      <label for="recurrence">* Monthly End Type</label>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="endMonthly" value="byMonthly" onClick="endRadioButtonMonthly()">
+                      <label class="form-check-label" for="dateOmegaMonthly">
+                      End by
+                      </div>
+                      </div>
+                      <div class="col-auto my-1">
+                        <input type="date" class="form-control dateOmegaMonthly" id="dateOmegaMonthly" name="dateOmegaMonthly">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-row text-input">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="endMonthly" value="afterMonthly" onClick="endRadioButtonMonthly()">
+                      <label class="form-check-label" for="monthlyCount">
+                      End after
+                      </div>
+                      </div>
+                      <div class="col-2 my-1">
+                        <input type="text" class="form-control monthlyCount" id="monthlyCount" name="monthlyCount">
+                      </div>
+                      <div class="col-auto pt-1 my-1"> ocurrence(s).
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                        <div class="form-check py-1">
+                          <input class="form-check-input" type="radio" name="endMonthly" value="noEndMonthly" onClick="endRadioButtonMonthly()">
+                          <label class="form-check-label" for="noEndMonthly"> No End Date </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End of endMonthly radio --> 
+                <!-- Start and end time monthly radio -->
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="timeAlphaMonthly">* Start Time</label>
+                    <input type="time" class="form-control" id="timeAlphaMonthly" name="timeAlphaMonthly">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="timeOmegaMonthly">* End Time</label>
+                    <input type="time" class="form-control" id="timeOmegaMonthly" name="timeOmegaMonthly">
+                  </div>
+                </div>
+                <!-- End of start and end time monthly radio -->
+                <hr>
+              </div>
+              <!-- End of monthly recurrence --> 
+            </div>
+          </div>
+          <!-- Yearly recurrence -->
+          <div class="row justify-content-center">
+            <div class="col-11 px-0 mx-0">
+              <div id="yearlyDiv" class="hide"><b>Yearly Recurrence</b>
+                <hr>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="dateAlphaYearly">* Start Date</label>
+                    <input type="date" class="form-control" id="dateAlphaYearly" name="dateAlphaYearly">
+                  </div>
+                </div>
+                <div class="form-row pb-3 text-input">
+                  <div class="col-auto">
+                    <div class="form-row pb-2">
+                      <div class="col-auto pt-2 my-1">
+                      <label for="numYears">
+                      Recur every
+                      </div>
+                      <div class="col-2 my-1">
+                        <input type="text" class="form-control numYears" id="numYears" name="numYears">
+                      </div>
+                      <div class="col-auto pt-2 my-1"> year(s)
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- recurrYearly radio -->
+                <div class="form-row">
+                  <div class="form-group container">
+                    <div class="form-row">
+                      <label for="recurrence">* Yearly Type</label>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="recurrYearly" value="chooseDayYearly" onClick="dayTimeButtonYearly()">
+                      <label class="form-check-label" for="dayYearlyLabel">
+                      On
+                      </div>
+                      </div>
+                      <div class="col-auto my-1">
+                        <select class="form-control monthNameYearly" id="monthNameYearly" name="monthNameYearly">
+                          <option value="-1">month</option>
+                          <option value="jan">January</option>
+                          <option value="feb">February</option>
+                          <option value="mar">March</option>
+                          <option value="apr">April</option>
+                          <option value="may">May</option>
+                          <option value="jun">June</option>
+                          <option value="jul">July</option>
+                          <option value="aug">August</option>
+                          <option value="sep">September</option>
+                          <option value="oct">October</option>
+                          <option value="nov">November</option>
+                          <option value="dec">December</option>
+                        </select>
+                      </div>
+                      <div class="col-4 my-1">
+                        <input type="text" class="form-control everyDayOfMonthYear" id="everyDayOfMonthYear" name="everyDayOfMonthYear" placeholder="day of month">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="recurrYearly" value="chooseToYearly" onClick="dayTimeButtonYearly()">
+                      <label class="form-check-label" for="recurrYearly">
+                      The
+                      </div>
+                      </div>
+                      <div class="col-auto my-1">
+                        <select class="form-control weekYearly" id="weekYearly" name="weekYearly">
+                          <option value="-1">week</option>
+                          <option value="firstWeek">first</option>
+                          <option value="secondWeek">second</option>
+                          <option value="thirdWeek">third</option>
+                          <option value="fourthWeek">fourth</option>
+                          <option value="lastWeek">last</option>
+                        </select>
+                      </div>
+                      <div class="col-auto my-1">
+                        <select class="form-control weekDayYearly" id="weekDayYearly" name="weekDayYearly">
+                          <option value="-1">day of week</option>
+                          <option value="sundayChoose">Sunday</option>
+                          <option value="mondayChoose">Monday</option>
+                          <option value="tuesdayChoose">Tuesday</option>
+                          <option value="wednesdayChoose">Wednesday</option>
+                          <option value="thursdayChoose">Thursday</option>
+                          <option value="fridayChoose">Friday</option>
+                          <option value="saturdayChoose">Saturday</option>
+                        </select>
+                      </div>
+                      <div class="col-auto my-1">
+                        <select class="form-control monthNameYearly2" id="monthNameYearly2" name="monthNameYearly2">
+                          <option value="-1">month</option>
+                          <option value="jan">January</option>
+                          <option value="feb">February</option>
+                          <option value="mar">March</option>
+                          <option value="apr">April</option>
+                          <option value="may">May</option>
+                          <option value="jun">June</option>
+                          <option value="jul">July</option>
+                          <option value="aug">August</option>
+                          <option value="sep">September</option>
+                          <option value="oct">October</option>
+                          <option value="nov">November</option>
+                          <option value="dec">December</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- endYearly radio -->
+                <div class="form-row">
+                  <div class="form-group container">
+                    <div class="form-row">
+                      <label for="recurrence">* Yearly End Type</label>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="endYearly" value="byYearly" onClick="endRadioButtonYearly()">
+                      <label class="form-check-label" for="dateOmegaYearly">
+                      End by
+                      </div>
+                      </div>
+                      <div class="col-auto my-1">
+                        <input type="date" class="form-control dateOmegaYearly" id="dateOmegaYearly" name="dateOmegaYearly">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-row text-input">
+                      <div class="col-auto my-1">
+                      <div class="form-check py-1">
+                      <input class="form-check-input" type="radio" name="endYearly" value="afterYearly" onClick="endRadioButtonYearly()">
+                      <label class="form-check-label" for="yearlyCount">
+                      End after
+                      </div>
+                      </div>
+                      <div class="col-2 my-1">
+                        <input type="text" class="form-control yearlyCount" id="yearlyCount" name="yearlyCount">
+                      </div>
+                      <div class="col-auto pt-1 my-1"> ocurrence(s).
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-auto my-1">
+                        <div class="form-check py-1">
+                          <input class="form-check-input" type="radio" name="endYearly" value="noEndYearly" onClick="endRadioButtonYearly()">
+                          <label class="form-check-label" for="noEndYearly"> No End Date </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End of endYearly radio --> 
+                </div>
+                <!-- End of recurrYearly radio --> 
+                <!-- Start and end time yearly radio -->
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="timeAlphaYearly">* Start Time</label>
+                    <input type="time" class="form-control" id="timeAlphaYearly" name="timeAlphaYearly">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="timeOmegaYearly">* End Time</label>
+                    <input type="time" class="form-control" id="timeOmegaYearly" name="timeOmegaYearly">
+                  </div>
+                </div>
+                <!-- End of start and end time yearly radio -->
+                <hr>
               </div>
             </div>
           </div>
-          <!-- End of endYearly radio --> 
-        </div>
-        <!-- End of recurrYearly radio --> 
-        <!-- Start and end time yearly radio -->
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="timeAlphaYearly">* Start Time</label>
-            <input type="time" class="form-control" id="timeAlphaYearly" name="timeAlphaYearly">
+          <!-- End of yearly recurrence -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="sel1">Classification:</label>
+              <select class="form-control" id="classType">
+                <option value="-1">select</option>
+                <option value="1">Public</option>
+                <option value="2">Private</option>
+                <option value="3">Confidential</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="sel1">Calendar Type:</label>
+              <select class="form-control" id="downloadType">
+                <option value="-1">select</option>
+                <option value="1">Outlook Calendar</option>
+                <option value="2">Google Calendar</option>
+                <option value="3">Apple Calendar</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="timeOmegaYearly">* End Time</label>
-            <input type="time" class="form-control" id="timeOmegaYearly" name="timeOmegaYearly">
+          <div class="row justify-content-center">
+            <button type="submit" class="btn btn-primary btn-dark submit" onclick="return check()" data-format="ical">Download</button>
           </div>
-        </div>
-        <!-- End of start and end time yearly radio --> 
-			  <hr>
+        </form>
+        <!-- End Form Content --> 
       </div>
-      <!-- End of yearly recurrence -->
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="sel1">Classification:</label>
-          <select class="form-control" id="classType">
-            <option value="-1">select</option>
-            <option value="1">Public</option>
-            <option value="2">Private</option>
-            <option value="3">Confidential</option>
-          </select>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="sel1">Calendar Type:</label>
-          <select class="form-control" id="downloadType">
-            <option value="-1">select</option>
-            <option value="1">Outlook Calendar</option>
-            <option value="2">Google Calendar</option>
-            <option value="3">Apple Calendar</option>
-          </select>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <button type="submit" class="btn btn-primary btn-dark submit" onclick="return check()" data-format="ical">Download</button>
-      </div>
-    </form>
-    <!-- End Form Content --> 
-    
+			</div>
+    </div>
   </div>
 </div>
 </body>

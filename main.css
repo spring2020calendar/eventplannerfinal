@@ -4,13 +4,20 @@ style
 div.error {
   color: #616DD9;
   font-size: 9pt;
+	width:inherit;
+	overflow:hidden;
+	margin:0px;
+	padding:0px;
 }
 
 #text-input
 {
     white-space:pre-wrap;
 }
-
+html, body {
+    margin: 0;
+    height: 100%;
+}
 body {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 11pt;
@@ -19,6 +26,7 @@ body {
 body {
 	background: linear-gradient(-45deg, #ee7752, #ebabc4, #81c5de, #7fdbc6, #ffffff);
 	background-size: 400% 400%;
+	height: auto;
 	animation: gradient 10s ease infinite;
 }
 
